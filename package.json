@@ -1,5 +1,5 @@
 {
-  "name": "attachment-field",
+  "name": "@enter-cosmos/attachment-field",
   "version": "1.0.0",
   "description": "attachment-field React component",
   "main": "lib/index.js",
@@ -19,7 +19,9 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "emotion": "^9.2.12"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
@@ -31,8 +33,11 @@
   "author": "",
   "homepage": "",
   "license": "MIT",
-  "repository": "",
   "keywords": [
     "react-component"
-  ]
+  ],
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  }
 }
