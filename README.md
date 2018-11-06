@@ -1,16 +1,19 @@
-# attachment-field
+# ![Attachment](https://user-images.githubusercontent.com/44801418/48063098-93a3f380-e1f6-11e8-95ef-5a9d39ef96ae.png) Attachment
 
-[![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
 
-Describe attachment-field here.
+Used for (pre)viewing and organizing a list of attachments.
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+## Features
+
+- Display an array of attachments
+- Preview overlay
+- Support for following types
+    - Images (png, jpeg)
+    - Animated images (gif)
+    - Video (mp4)
+    - Audio (ogg, mp3)
+- Upload progress indicator
 
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[npm]: https://www.npmjs.com/package/@cmds/attachment

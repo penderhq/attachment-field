@@ -1,7 +1,7 @@
 {
-  "name": "@enter-cosmos/attachment-field",
-  "version": "1.0.0",
-  "description": "attachment-field React component",
+  "name": "@cmds/attachment",
+  "version": "1.0.1",
+  "description": "Used for (pre)viewing and organizing a list of attachments.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [

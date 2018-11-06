@@ -1,7 +1,7 @@
 import React from 'react'
 import {css} from 'emotion'
 
-class Attachment extends React.Component {
+class AttachmentItem extends React.Component {
 
     render() {
 
@@ -20,7 +20,7 @@ class Attachment extends React.Component {
     }
 }
 
-export default class AttachmentField extends React.Component {
+export default class Attachment extends React.Component {
     render() {
         return (
             <div
@@ -35,7 +35,7 @@ export default class AttachmentField extends React.Component {
                             margin-right: 6px;
                         `}
                     >
-                        <Attachment
+                        <AttachmentItem
                             attachment={attachment}
                         />
                     </div>
