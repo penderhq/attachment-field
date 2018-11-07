@@ -1,6 +1,6 @@
 {
-  "name": "@cmds/attachment",
-  "version": "1.0.2",
+  "name": "@cmds/attachment-field",
+  "version": "0.1.0",
   "description": "Used for (pre)viewing and organizing a list of attachments.",
   "main": "lib/index.js",
   "module": "es/index.js",

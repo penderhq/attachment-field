@@ -2,7 +2,7 @@ import React from 'react'
 import times from 'lodash/times'
 import {css, injectGlobal} from 'emotion'
 import {render} from 'react-dom'
-import Attachment from '../../src'
+import AttachmentField from '../../src'
 
 injectGlobal`
     body {
@@ -30,10 +30,10 @@ class Viewport extends React.Component {
 class Demo extends React.Component {
     render() {
         return <div>
-            <h1>Attachment</h1>
+            <h1>AttachmentField</h1>
             <h2>No attachments</h2>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                 />
             </Viewport>
@@ -44,7 +44,7 @@ class Demo extends React.Component {
                 </li>
             </ul>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                     attachments={times(30).map(i => ({
                         id: `${i}`,
@@ -61,7 +61,7 @@ class Demo extends React.Component {
             </Viewport>
             <h2>GIF (image/gif)</h2>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                     attachments={[{
                         id: '1',
@@ -80,7 +80,7 @@ class Demo extends React.Component {
                 Audio (audio/mpeg)
             </h2>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                     attachments={[{
                         id: '1',
@@ -95,7 +95,7 @@ class Demo extends React.Component {
                 Video (video/mp4)
             </h2>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                     attachments={[{
                         id: '1',
@@ -110,7 +110,7 @@ class Demo extends React.Component {
                 Video (video/mp4)
             </h2>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                     attachments={[{
                         id: '1',
@@ -125,7 +125,7 @@ class Demo extends React.Component {
                 Mixed
             </h2>
             <Viewport>
-                <Attachment
+                <AttachmentField
                     mode={'preview'}
                     attachments={[{
                         id: '1',

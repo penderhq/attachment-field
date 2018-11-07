@@ -254,7 +254,7 @@ class AttachmentItem extends React.Component {
     }
 }
 
-export default class Attachment extends React.Component {
+export default class AttachmentField extends React.Component {
     render() {
 
         const {attachments} = this.props
