@@ -15,5 +15,5 @@ Used for (pre)viewing and organizing a list of attachments.
     - Audio (ogg, mp3)
 - Upload progress indicator
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
+[npm-badge]: https://img.shields.io/npm/v/@cmds/attachment-field.svg
 [npm]: https://www.npmjs.com/package/@cmds/attachment-field
