@@ -27,17 +27,107 @@ class Viewport extends React.Component {
     }
 }
 
+const Cell = ({children}) => (
+    <div
+        className={css`
+            width: 240px;
+            height: 22px;
+        `}
+    >
+        {children}
+    </div>
+)
+
 class Demo extends React.Component {
     render() {
         return <div>
-            <h1>AttachmentField</h1>
-            <h2>No attachments</h2>
+            <h1>AttachmentField Demo</h1>
+            <p>Used for (pre)viewing and organizing a list of attachments.</p>
+            <h2>Context based</h2>
+            <p>The behaviour of the component changes based on the context in which it is rendered.</p>
+            <h3>
+                RecordGalleryCard context
+            </h3>
+            <p>Used for previewing small thumbnails of the attachments in a record gallery card</p>
+            <h5>6 pictures</h5>
+            <Viewport>
+                <Cell>
+                    <AttachmentField
+                        contextId={'recordGalleryCard'}
+                        roleId={'readOnly'}
+                        attachments={times(6).map(i => ({
+                            id: `${i}`,
+                            mimeType: 'image/jpeg',
+                            filename: `Image ${i + 1}`,
+                            thumbnails: {
+                                small: `https://lorempixel.com/300/200/nature?=${i}`,
+                                medium: `https://lorempixel.com/300/200/nature?=${i}`,
+                                large: `https://lorempixel.com/300/200/nature?=${i}`,
+                            },
+                            url: `https://lorempixel.com/300/200/nature?=${i}`
+                        }))}
+                    />
+                </Cell>
+            </Viewport>
+            <h5>
+                Mixed attachments
+            </h5>
+            <Viewport>
+                <Cell>
+                    <AttachmentField
+                        contextId={'recordGalleryCard'}
+                        roleId={'readOnly'}
+                        attachments={[{
+                            id: '1',
+                            mimeType: 'video/ogg',
+                            filename: 'Video',
+                            thumbnails: null,
+                            url: 'https://www.w3schools.com/html/mov_bbb.ogg'
+                        }, {
+                            id: '2',
+                            mimeType: 'audio/mpeg',
+                            filename: 'Audio',
+                            thumbnails: null,
+                            url: 'https://dl.airtable.com/AILblIU3RJfJTtudwUE8_%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97'
+                        }, {
+                            id: '3',
+                            mimeType: 'image/jpeg',
+                            filename: `Image`,
+                            thumbnails: {
+                                small: 'https://lorempixel.com/300/200/nature',
+                                medium: 'https://lorempixel.com/300/200/nature',
+                                large: 'https://lorempixel.com/300/200/nature',
+                            },
+                            url: 'https://lorempixel.com/300/200/nature'
+                        }, {
+                            id: '4',
+                            mimeType: 'image/gif',
+                            filename: 'GIF',
+                            thumbnails: {
+                                small: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
+                                medium: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
+                                large: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
+                            },
+                            url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                        }]}
+                    />
+                </Cell>
+            </Viewport>
+            <h3>
+                RecordDetail context
+            </h3>
+            <p>Used for uploading / removing / previewing / reordering attachments in a record detail.</p>
+            <h4>
+                Editor role
+            </h4>
+            <h5>No attachments</h5>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                 />
             </Viewport>
-            <h2>30 images (image/jpeg)</h2>
+            <h5>30 images (image/jpeg)</h5>
             <ul>
                 <li>
                     Should show 'show more' button after more than 4 rows
@@ -45,24 +135,26 @@ class Demo extends React.Component {
             </ul>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                     attachments={times(30).map(i => ({
                         id: `${i}`,
                         mimeType: 'image/jpeg',
                         filename: `Image ${i + 1}`,
                         thumbnails: {
-                            small: 'https://placekitten.com/200/300',
-                            medium: 'https://placekitten.com/200/300',
-                            large: 'https://placekitten.com/200/300',
+                            small: `https://lorempixel.com/300/200/nature?=${i}`,
+                            medium: `https://lorempixel.com/300/200/nature?=${i}`,
+                            large: `https://lorempixel.com/300/200/nature?=${i}`,
                         },
-                        url: 'https://placekitten.com/200/300'
+                        url: `https://lorempixel.com/300/200/nature?=${i}`
                     }))}
                 />
             </Viewport>
-            <h2>GIF (image/gif)</h2>
+            <h5>GIF (image/gif)</h5>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                     attachments={[{
                         id: '1',
                         mimeType: 'image/gif',
@@ -76,12 +168,13 @@ class Demo extends React.Component {
                     }]}
                 />
             </Viewport>
-            <h2>
+            <h5>
                 Audio (audio/mpeg)
-            </h2>
+            </h5>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                     attachments={[{
                         id: '1',
                         mimeType: 'audio/mpeg',
@@ -91,12 +184,13 @@ class Demo extends React.Component {
                     }]}
                 />
             </Viewport>
-            <h2>
+            <h5>
                 Video (video/mp4)
-            </h2>
+            </h5>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                     attachments={[{
                         id: '1',
                         mimeType: 'video/mp4',
@@ -106,12 +200,13 @@ class Demo extends React.Component {
                     }]}
                 />
             </Viewport>
-            <h2>
+            <h5>
                 Video (video/mp4)
-            </h2>
+            </h5>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                     attachments={[{
                         id: '1',
                         mimeType: 'video/ogg',
@@ -121,12 +216,13 @@ class Demo extends React.Component {
                     }]}
                 />
             </Viewport>
-            <h2>
+            <h5>
                 Mixed
-            </h2>
+            </h5>
             <Viewport>
                 <AttachmentField
-                    mode={'preview'}
+                    contextId={'recordDetail'}
+                    roleId={'readOnly'}
                     attachments={[{
                         id: '1',
                         mimeType: 'video/ogg',
@@ -144,11 +240,11 @@ class Demo extends React.Component {
                         mimeType: 'image/jpeg',
                         filename: `Image`,
                         thumbnails: {
-                            small: 'https://placekitten.com/200/300',
-                            medium: 'https://placekitten.com/200/300',
-                            large: 'https://placekitten.com/200/300',
+                            small: 'https://lorempixel.com/300/200/nature',
+                            medium: 'https://lorempixel.com/300/200/nature',
+                            large: 'https://lorempixel.com/300/200/nature',
                         },
-                        url: 'https://placekitten.com/200/300'
+                        url: 'https://lorempixel.com/300/200/nature'
                     }, {
                         id: '4',
                         mimeType: 'image/gif',
@@ -162,30 +258,33 @@ class Demo extends React.Component {
                     }]}
                 />
             </Viewport>
-            <h2>
+            <h5>
                 Loading attachment previews
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Preview overlay
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Uploading
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Drag and drop
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Read only
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Inline
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Expanded
-            </h2>
-            <h2>
+            </h5>
+            <h5>
                 Error not found
-            </h2>
+            </h5>
+            <h5>
+                Image loading indicator
+            </h5>
         </div>
     }
 }
