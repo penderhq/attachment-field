@@ -1,20 +1,25 @@
 import React from 'react'
+import get from 'lodash/get'
 import {css} from 'emotion'
 
-const Attachment = ({attachment}) => (
-    <div
-        className={css`
+const Attachment = ({attachment}) => {
+
+    const url = get(attachment, 'thumbnails.small.url')
+
+    return (
+        <div
+            className={css`
             position: relative;
             box-sizing: border-box;
             width: 38px;
             height: 25px;
             overflow: hidden;
         `}
-    >
-        {attachment.thumbnails && attachment.thumbnails.small ? (
-            <div
-                className={css`
-                background-image: url(${attachment.thumbnails.small});
+        >
+            {url ? (
+                <div
+                    className={css`
+                background-image: url(${url});
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center center;
@@ -24,10 +29,10 @@ const Attachment = ({attachment}) => (
                 right: 0px;
                 bottom: 0px;
             `}
-            />
-        ) : (
-            <div
-                className={css`
+                />
+            ) : (
+                <div
+                    className={css`
                     position: absolute;
                     top: 0px;
                     left: 0px;
@@ -35,10 +40,11 @@ const Attachment = ({attachment}) => (
                     bottom: 0px;
                     background-color: #f7f7f7;
                 `}
-            />
-        )}
-    </div>
-)
+                />
+            )}
+        </div>
+    )
+}
 
 const AttachmentField = ({attachments}) => (
     <div

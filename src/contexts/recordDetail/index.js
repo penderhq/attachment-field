@@ -42,7 +42,7 @@ class Image extends React.Component {
                         bottom: 0;
                         background-size: cover;
                         background-repeat: no-repeat;
-                        background-image: url(${this.props.attachment.thumbnails.medium});
+                        background-image: url(${this.props.attachment.thumbnails.medium.url});
                     `}
                 />
             </div>

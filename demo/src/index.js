@@ -60,9 +60,15 @@ class Demo extends React.Component {
                             mimeType: 'image/jpeg',
                             filename: `Image ${i + 1}`,
                             thumbnails: {
-                                small: `https://lorempixel.com/300/200/nature?=${i}`,
-                                medium: `https://lorempixel.com/300/200/nature?=${i}`,
-                                large: `https://lorempixel.com/300/200/nature?=${i}`,
+                                small: {
+                                    url: `https://lorempixel.com/300/200/nature?=${i}`
+                                },
+                                medium: {
+                                    url: `https://lorempixel.com/300/200/nature?=${i}`
+                                },
+                                large: {
+                                    url: `https://lorempixel.com/300/200/nature?=${i}`
+                                },
                             },
                             url: `https://lorempixel.com/300/200/nature?=${i}`
                         }))}
@@ -94,9 +100,15 @@ class Demo extends React.Component {
                             mimeType: 'image/jpeg',
                             filename: `Image`,
                             thumbnails: {
-                                small: 'https://lorempixel.com/300/200/nature',
-                                medium: 'https://lorempixel.com/300/200/nature',
-                                large: 'https://lorempixel.com/300/200/nature',
+                                small: {
+                                    url: 'https://lorempixel.com/300/200/nature'
+                                },
+                                medium: {
+                                    url: 'https://lorempixel.com/300/200/nature'
+                                },
+                                large: {
+                                    url: 'https://lorempixel.com/300/200/nature'
+                                },
                             },
                             url: 'https://lorempixel.com/300/200/nature'
                         }, {
@@ -104,9 +116,15 @@ class Demo extends React.Component {
                             mimeType: 'image/gif',
                             filename: 'GIF',
                             thumbnails: {
-                                small: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
-                                medium: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
-                                large: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
+                                small: {
+                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                                },
+                                medium: {
+                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                                },
+                                large: {
+                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                                },
                             },
                             url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
                         }]}
@@ -142,9 +160,15 @@ class Demo extends React.Component {
                         mimeType: 'image/jpeg',
                         filename: `Image ${i + 1}`,
                         thumbnails: {
-                            small: `https://lorempixel.com/300/200/nature?=${i}`,
-                            medium: `https://lorempixel.com/300/200/nature?=${i}`,
-                            large: `https://lorempixel.com/300/200/nature?=${i}`,
+                            small: {
+                                url: `https://lorempixel.com/300/200/nature?=${i}`
+                            },
+                            medium: {
+                                url: `https://lorempixel.com/300/200/nature?=${i}`
+                            },
+                            large: {
+                                url: `https://lorempixel.com/300/200/nature?=${i}`
+                            },
                         },
                         url: `https://lorempixel.com/300/200/nature?=${i}`
                     }))}
@@ -160,9 +184,15 @@ class Demo extends React.Component {
                         mimeType: 'image/gif',
                         filename: 'GIF',
                         thumbnails: {
-                            small: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
-                            medium: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
-                            large: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
+                            small: {
+                                url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                            },
+                            medium: {
+                                url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                            },
+                            large: {
+                                url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                            },
                         },
                         url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
                     }]}
@@ -240,9 +270,15 @@ class Demo extends React.Component {
                         mimeType: 'image/jpeg',
                         filename: `Image`,
                         thumbnails: {
-                            small: 'https://lorempixel.com/300/200/nature',
-                            medium: 'https://lorempixel.com/300/200/nature',
-                            large: 'https://lorempixel.com/300/200/nature',
+                            small: {
+                                url: 'https://lorempixel.com/300/200/nature'
+                            },
+                            medium: {
+                                url: 'https://lorempixel.com/300/200/nature'
+                            },
+                            large: {
+                                url: 'https://lorempixel.com/300/200/nature'
+                            },
                         },
                         url: 'https://lorempixel.com/300/200/nature'
                     }, {
@@ -250,9 +286,15 @@ class Demo extends React.Component {
                         mimeType: 'image/gif',
                         filename: 'GIF',
                         thumbnails: {
-                            small: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
-                            medium: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
-                            large: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif',
+                            small: {
+                                url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                            },
+                            medium: {
+                                url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                            },
+                            large: {
+                                url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                            },
                         },
                         url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
                     }]}
