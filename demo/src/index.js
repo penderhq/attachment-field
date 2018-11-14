@@ -1,4 +1,5 @@
 import React from 'react'
+import sample from 'lodash/sample'
 import times from 'lodash/times'
 import {css, injectGlobal} from 'emotion'
 import {render} from 'react-dom'
@@ -38,6 +39,29 @@ const Cell = ({children}) => (
     </div>
 )
 
+const generateAttachment = (i) => {
+
+    const cat = sample(['wanderlust', 'water', 'canada', 'mountain', 'beach'])
+
+    return {
+        id: `${i}`,
+        type: 'image/jpeg',
+        filename: `${cat} ${i}`,
+        thumbnails: {
+            small: {
+                url: `https://source.unsplash.com/featured/400x360?${cat}`
+            },
+            medium: {
+                url: `https://source.unsplash.com/featured/400x360?${cat}`
+            },
+            large: {
+                url: `https://source.unsplash.com/featured/400x360?${cat}`
+            },
+        },
+        url: `https://source.unsplash.com/featured/400x360?${cat}`
+    }
+}
+
 class Demo extends React.Component {
     render() {
         return <div>
@@ -55,23 +79,7 @@ class Demo extends React.Component {
                     <AttachmentField
                         contextId={'recordGalleryCard'}
                         roleId={'readOnly'}
-                        attachments={times(6).map(i => ({
-                            id: `${i}`,
-                            mimeType: 'image/jpeg',
-                            filename: `Image ${i + 1}`,
-                            thumbnails: {
-                                small: {
-                                    url: `https://lorempixel.com/300/200/nature?=${i}`
-                                },
-                                medium: {
-                                    url: `https://lorempixel.com/300/200/nature?=${i}`
-                                },
-                                large: {
-                                    url: `https://lorempixel.com/300/200/nature?=${i}`
-                                },
-                            },
-                            url: `https://lorempixel.com/300/200/nature?=${i}`
-                        }))}
+                        attachments={times(6).map(i => generateAttachment(i))}
                     />
                 </Cell>
             </Viewport>
@@ -85,19 +93,19 @@ class Demo extends React.Component {
                         roleId={'readOnly'}
                         attachments={[{
                             id: '1',
-                            mimeType: 'video/ogg',
+                            type: 'video/ogg',
                             filename: 'Video',
                             thumbnails: null,
                             url: 'https://www.w3schools.com/html/mov_bbb.ogg'
                         }, {
                             id: '2',
-                            mimeType: 'audio/mpeg',
+                            type: 'audio/mpeg',
                             filename: 'Audio',
                             thumbnails: null,
                             url: 'https://dl.airtable.com/AILblIU3RJfJTtudwUE8_%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97'
                         }, {
                             id: '3',
-                            mimeType: 'image/jpeg',
+                            type: 'image/jpeg',
                             filename: `Image`,
                             thumbnails: {
                                 small: {
@@ -113,7 +121,7 @@ class Demo extends React.Component {
                             url: 'https://lorempixel.com/300/200/nature'
                         }, {
                             id: '4',
-                            mimeType: 'image/gif',
+                            type: 'image/gif',
                             filename: 'GIF',
                             thumbnails: {
                                 small: {
@@ -155,23 +163,7 @@ class Demo extends React.Component {
                 <AttachmentField
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
-                    attachments={times(30).map(i => ({
-                        id: `${i}`,
-                        mimeType: 'image/jpeg',
-                        filename: `Image ${i + 1}`,
-                        thumbnails: {
-                            small: {
-                                url: `https://lorempixel.com/300/200/nature?=${i}`
-                            },
-                            medium: {
-                                url: `https://lorempixel.com/300/200/nature?=${i}`
-                            },
-                            large: {
-                                url: `https://lorempixel.com/300/200/nature?=${i}`
-                            },
-                        },
-                        url: `https://lorempixel.com/300/200/nature?=${i}`
-                    }))}
+                    attachments={times(30).map(i => generateAttachment(i))}
                 />
             </Viewport>
             <h5>GIF (image/gif)</h5>
@@ -181,7 +173,7 @@ class Demo extends React.Component {
                     roleId={'readOnly'}
                     attachments={[{
                         id: '1',
-                        mimeType: 'image/gif',
+                        type: 'image/gif',
                         filename: 'GIF',
                         thumbnails: {
                             small: {
@@ -207,7 +199,7 @@ class Demo extends React.Component {
                     roleId={'readOnly'}
                     attachments={[{
                         id: '1',
-                        mimeType: 'audio/mpeg',
+                        type: 'audio/mpeg',
                         filename: 'Audio',
                         thumbnails: null,
                         url: 'https://dl.airtable.com/AILblIU3RJfJTtudwUE8_%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97'
@@ -223,7 +215,7 @@ class Demo extends React.Component {
                     roleId={'readOnly'}
                     attachments={[{
                         id: '1',
-                        mimeType: 'video/mp4',
+                        type: 'video/mp4',
                         filename: 'Video',
                         thumbnails: null,
                         url: 'https://www.w3schools.com/html/mov_bbb.mp4'
@@ -239,7 +231,7 @@ class Demo extends React.Component {
                     roleId={'readOnly'}
                     attachments={[{
                         id: '1',
-                        mimeType: 'video/ogg',
+                        type: 'video/ogg',
                         filename: 'Video',
                         thumbnails: null,
                         url: 'https://www.w3schools.com/html/mov_bbb.ogg'
@@ -255,19 +247,19 @@ class Demo extends React.Component {
                     roleId={'readOnly'}
                     attachments={[{
                         id: '1',
-                        mimeType: 'video/ogg',
+                        type: 'video/ogg',
                         filename: 'Video',
                         thumbnails: null,
                         url: 'https://www.w3schools.com/html/mov_bbb.ogg'
                     }, {
                         id: '2',
-                        mimeType: 'audio/mpeg',
+                        type: 'audio/mpeg',
                         filename: 'Audio',
                         thumbnails: null,
                         url: 'https://dl.airtable.com/AILblIU3RJfJTtudwUE8_%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97'
                     }, {
                         id: '3',
-                        mimeType: 'image/jpeg',
+                        type: 'image/jpeg',
                         filename: `Image`,
                         thumbnails: {
                             small: {
@@ -283,7 +275,7 @@ class Demo extends React.Component {
                         url: 'https://lorempixel.com/300/200/nature'
                     }, {
                         id: '4',
-                        mimeType: 'image/gif',
+                        type: 'image/gif',
                         filename: 'GIF',
                         thumbnails: {
                             small: {

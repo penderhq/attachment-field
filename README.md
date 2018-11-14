@@ -15,5 +15,40 @@ Used for (pre)viewing and organizing a list of attachments.
     - Audio (ogg, mp3)
 - Upload progress indicator
 
+## Prop Types
+
+| Property | Type | Required? | Description |
+|:---|:---|:---:|:---|
+| attachments | Array | ✓ | Array of [Attachment](#attachment) objects. Example: See down below. |
+
+### Attachment
+
+```
+{
+    filename: "Nature.jpg",
+    id: "att8NBBKRa8slSrnB",
+    size: 1165273,
+    type: "image/jpeg",
+    url: "https://cosmos3.s3.amazonaws.com/att8NBBKRa8slSrnB",
+    thumbnails: {
+        large: {
+            height: 384,
+            url: "https://cosmos3.s3.amazonaws.com/att8NBBKRa8slSrnB_large",
+            width: 512
+        },
+        medium: {
+            height: 240,
+            url: "https://cosmos3.s3.amazonaws.com/att8NBBKRa8slSrnB_medium",
+            width: 320
+        },
+        small: {
+            height: 27,
+            url: "https://cosmos3.s3.amazonaws.com/att8NBBKRa8slSrnB_small",
+            width: 36
+        }
+    }
+}
+```
+
 [npm-badge]: https://img.shields.io/npm/v/@cmds/attachment-field.svg
 [npm]: https://www.npmjs.com/package/@cmds/attachment-field

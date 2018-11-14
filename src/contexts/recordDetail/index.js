@@ -58,7 +58,7 @@ class Audio extends React.Component {
 
     render() {
 
-        const {mimeType, url} = this.props.attachment
+        const {type, url} = this.props.attachment
 
         return (
             <div
@@ -75,7 +75,7 @@ class Audio extends React.Component {
                     onPause={this.handlePause}
                     onPlay={this.handlePlay}
                 >
-                    <source src={url} type={mimeType}/>
+                    <source src={url} type={type}/>
                     Your browser does not support the audio element.
                 </audio>
                 <PlayButton
@@ -127,7 +127,7 @@ class Video extends React.Component {
 
     render() {
 
-        const {url, mimeType} = this.props.attachment
+        const {url, type} = this.props.attachment
 
         return (
             <div
@@ -152,7 +152,7 @@ class Video extends React.Component {
                         transform: translate(-50%,-50%);
                     `}
                 >
-                    <source src={url} type={mimeType}/>
+                    <source src={url} type={type}/>
                     Your browser does not support the video tag.
                 </video>
                 <div
@@ -216,6 +216,8 @@ class Video extends React.Component {
 
 const previews = {
     'image/jpeg': Image,
+    'image/jpg': Image,
+    'image/png': Image,
     'image/gif': Image,
     'audio/mpeg': Audio,
     'video/mp4': Video,
@@ -226,8 +228,8 @@ class AttachmentItem extends React.Component {
 
     render() {
 
-        const {mimeType} = this.props.attachment
-        const Preview = previews[mimeType]
+        const {type} = this.props.attachment
+        const Preview = previews[type]
 
         return (
             <div
