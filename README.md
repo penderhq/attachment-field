@@ -15,13 +15,28 @@ Used for (pre)viewing and organizing a list of attachments.
     - Audio (ogg, mp3)
 - Upload progress indicator
 
-## Prop Types
+## Getting started
+
+````
+npm install @cmds/attachment-field --save
+````
+
+### Prop Types
 
 | Property | Type | Required? | Description |
 |:---|:---|:---:|:---|
-| attachments | Array | ✓ | Array of [Attachment](#attachment) objects. Example: See down below. |
+| id | String | ✓ | Unique id for the instance of this field |
+| contextId | Context | ✓ | The appearance will change depending on context in which the field is displayed. Valid options include: `recordDetail` or `recordGridRow` or `recordGalleryCard` or `recordListItem` |
+| roleId | Role | ✓ | The behaviour changes based on the role. Valid options include `editor` or `readOnly` |
+| attachments | Array | ✓ | Array of `Attachment` objects. [Learn more](#attachment) |
+| uploads | Array | ✓ | Array of `Upload` objects. [Learn more](#upload) |
+| onCreate | Function |  | Callback invoked whenever a file gets dropped or selected in the field: `({id: string, file: File}): void` |
+| onRemove | Function |  | Callback invoked whenever an attachment get's removed: `({id: string, file: File}): void` |
+| onRename | Function |  | Callback invoked whenever an attachment's filename changes: `({id: string, attachmentId: string, filename: string}): void` |
+| onClear | Function |  | Callback invoked whenever all attachments get removed at once: `({id: string}): void` |
+| onSort | Function |  | Callback invoked whenever one of the attachments get's sorted: `({id: string, attachmentId: string, targetIndex: number}): void` |
 
-### Attachment
+#### Attachment
 
 ```
 {
@@ -50,5 +65,23 @@ Used for (pre)viewing and organizing a list of attachments.
 }
 ```
 
+#### Upload
+
+```
+{
+    id: 'upl1',
+    filename: 'Nature.jpg',
+    url: 'https://cosmos3.s3.amazonaws.com/att8NBBKRa8slSrnB',
+    progress: 0.8 // 80%
+}
+
+```
+
+
+### More information
+
+This component is designed and developed as part of [Cosmos Design System][cmds]. 
+
+[cmds]: https://github.com/entercosmos/cosmos
 [npm-badge]: https://img.shields.io/npm/v/@cmds/attachment-field.svg
 [npm]: https://www.npmjs.com/package/@cmds/attachment-field
