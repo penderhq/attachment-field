@@ -49,16 +49,16 @@ const generateAttachment = (i) => {
         filename: `${cat} ${i}`,
         thumbnails: {
             small: {
-                url: `https://source.unsplash.com/featured/400x360?${cat}`
+                url: `https://source.unsplash.com/featured/800x720?${cat}`
             },
             medium: {
-                url: `https://source.unsplash.com/featured/400x360?${cat}`
+                url: `https://source.unsplash.com/featured/800x720?${cat}`
             },
             large: {
-                url: `https://source.unsplash.com/featured/400x360?${cat}`
+                url: `https://source.unsplash.com/featured/800x720?${cat}`
             },
         },
-        url: `https://source.unsplash.com/featured/400x360?${cat}`
+        url: `https://source.unsplash.com/featured/800x720?${cat}`
     }
 }
 
@@ -77,6 +77,7 @@ class Demo extends React.Component {
             <Viewport>
                 <Cell>
                     <AttachmentField
+                        id={'fld1'}
                         contextId={'recordGalleryCard'}
                         roleId={'readOnly'}
                         attachments={times(6).map(i => generateAttachment(i))}
@@ -89,6 +90,7 @@ class Demo extends React.Component {
             <Viewport>
                 <Cell>
                     <AttachmentField
+                        id={'fld1'}
                         contextId={'recordGalleryCard'}
                         roleId={'readOnly'}
                         attachments={[{
@@ -109,16 +111,16 @@ class Demo extends React.Component {
                             filename: `Image`,
                             thumbnails: {
                                 small: {
-                                    url: 'https://lorempixel.com/300/200/nature'
+                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
                                 },
                                 medium: {
-                                    url: 'https://lorempixel.com/300/200/nature'
+                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
                                 },
                                 large: {
-                                    url: 'https://lorempixel.com/300/200/nature'
+                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
                                 },
                             },
-                            url: 'https://lorempixel.com/300/200/nature'
+                            url: 'https://source.unsplash.com/featured/800x720?wanderlust'
                         }, {
                             id: '4',
                             type: 'image/gif',
@@ -149,6 +151,7 @@ class Demo extends React.Component {
             <h5>No attachments</h5>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                 />
@@ -161,6 +164,7 @@ class Demo extends React.Component {
             </ul>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                     attachments={times(30).map(i => generateAttachment(i))}
@@ -169,6 +173,7 @@ class Demo extends React.Component {
             <h5>GIF (image/gif)</h5>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                     attachments={[{
@@ -195,6 +200,7 @@ class Demo extends React.Component {
             </h5>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                     attachments={[{
@@ -211,6 +217,7 @@ class Demo extends React.Component {
             </h5>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                     attachments={[{
@@ -227,6 +234,7 @@ class Demo extends React.Component {
             </h5>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                     attachments={[{
@@ -243,6 +251,7 @@ class Demo extends React.Component {
             </h5>
             <Viewport>
                 <AttachmentField
+                    id={'fld1'}
                     contextId={'recordDetail'}
                     roleId={'readOnly'}
                     attachments={[{

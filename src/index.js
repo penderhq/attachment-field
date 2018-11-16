@@ -12,6 +12,17 @@ const THUMBNAIL_SHAPE = PropTypes.shape({
 export default class AttachmentField extends React.Component {
 
     static propTypes = {
+        id: PropTypes.string.isRequired,
+        contextId: PropTypes.oneOf(['recordDetail', 'recordGridRow', 'recordGalleryCard', 'recordListItem']),
+        roleId: PropTypes.oneOf(['editor', 'readOnly']),
+        uploads: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string.isRequired,
+                filename: PropTypes.string,
+                url: PropTypes.string.isRequired,
+                progress: PropTypes.string.isRequired
+            })
+        ),
         attachments: PropTypes.arrayOf(
             PropTypes.shape({
                 id: PropTypes.string.isRequired,
@@ -32,7 +43,12 @@ export default class AttachmentField extends React.Component {
                     large: THUMBNAIL_SHAPE,
                 })
             })
-        )
+        ),
+        onCreate: PropTypes.func,
+        onRemove: PropTypes.func,
+        onRename: PropTypes.func,
+        onClear: PropTypes.func,
+        onSort: PropTypes.func
     }
 
     render() {
