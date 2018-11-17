@@ -12,7 +12,7 @@ const Attachment = ({attachment}) => {
             position: relative;
             box-sizing: border-box;
             width: 38px;
-            height: 25px;
+            height: 100%;
             overflow: hidden;
         `}
         >
@@ -59,6 +59,7 @@ const AttachmentField = ({attachments}) => (
             display: flex;
             flex-wrap: wrap;
             width: 100%;
+            height: 100%;
         `}
     >
         <div
@@ -67,6 +68,7 @@ const AttachmentField = ({attachments}) => (
                 flex: 1 1 auto;
                 min-width: 0;
                 min-height: 0;
+                height: 100%;
             `}
         >
             <div
@@ -77,6 +79,7 @@ const AttachmentField = ({attachments}) => (
                     min-height: 0;
                     align-content: flex-start;
                     overflow: hidden;
+                    height: 100%;
                 `}
             >
                 {attachments && attachments.length ? attachments.map(attachment => (
@@ -91,7 +94,7 @@ const AttachmentField = ({attachments}) => (
                             overflow: hidden;
                             width: auto;
                             margin-right: 2px;
-                            margin-bottom: 2px;
+                            height: 100%;
                         `}
                     >
                         <Attachment
