@@ -59,7 +59,6 @@ export default class AttachmentField extends React.Component {
 
             return (
                 <RecordDetail
-                    roleId={roleId}
                     {...this.props}
                 />
             )
@@ -69,10 +68,24 @@ export default class AttachmentField extends React.Component {
 
             return (
                 <RecordGalleryCard
-                    roleId={roleId}
                     {...this.props}
                 />
             )
         }
+
+        if (contextId === 'recordListItem' && roleId === 'readOnly') {
+
+            return (
+                <RecordGalleryCard
+                    {...this.props}
+                />
+            )
+        }
+
+        return (
+            <div>
+                Not supported
+            </div>
+        )
     }
 }

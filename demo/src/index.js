@@ -70,78 +70,6 @@ class Demo extends React.Component {
             <h2>Context based</h2>
             <p>The behaviour of the component changes based on the context in which it is rendered.</p>
             <h3>
-                RecordGalleryCard context
-            </h3>
-            <p>Used for previewing small thumbnails of the attachments in a record gallery card</p>
-            <h5>6 pictures</h5>
-            <Viewport>
-                <Cell>
-                    <AttachmentField
-                        id={'fld1'}
-                        contextId={'recordGalleryCard'}
-                        roleId={'readOnly'}
-                        attachments={times(6).map(i => generateAttachment(i))}
-                    />
-                </Cell>
-            </Viewport>
-            <h5>
-                Mixed attachments
-            </h5>
-            <Viewport>
-                <Cell>
-                    <AttachmentField
-                        id={'fld1'}
-                        contextId={'recordGalleryCard'}
-                        roleId={'readOnly'}
-                        attachments={[{
-                            id: '1',
-                            type: 'video/ogg',
-                            filename: 'Video',
-                            thumbnails: null,
-                            url: 'https://www.w3schools.com/html/mov_bbb.ogg'
-                        }, {
-                            id: '2',
-                            type: 'audio/mpeg',
-                            filename: 'Audio',
-                            thumbnails: null,
-                            url: 'https://dl.airtable.com/AILblIU3RJfJTtudwUE8_%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97'
-                        }, {
-                            id: '3',
-                            type: 'image/jpeg',
-                            filename: `Image`,
-                            thumbnails: {
-                                small: {
-                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
-                                },
-                                medium: {
-                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
-                                },
-                                large: {
-                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
-                                },
-                            },
-                            url: 'https://source.unsplash.com/featured/800x720?wanderlust'
-                        }, {
-                            id: '4',
-                            type: 'image/gif',
-                            filename: 'GIF',
-                            thumbnails: {
-                                small: {
-                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
-                                },
-                                medium: {
-                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
-                                },
-                                large: {
-                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
-                                },
-                            },
-                            url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
-                        }]}
-                    />
-                </Cell>
-            </Viewport>
-            <h3>
                 RecordDetail context
             </h3>
             <p>Used for uploading / removing / previewing / reordering attachments in a record detail.</p>
@@ -301,33 +229,78 @@ class Demo extends React.Component {
                     }]}
                 />
             </Viewport>
+            <h3>
+                RecordListItem context
+            </h3>
+            <p>Used for previewing small thumbnails of the attachments in a record list item.</p>
+            <h5>6 pictures</h5>
+            <Viewport>
+                <Cell>
+                    <AttachmentField
+                        id={'fld1'}
+                        contextId={'recordListItem'}
+                        roleId={'readOnly'}
+                        attachments={times(6).map(i => generateAttachment(i))}
+                    />
+                </Cell>
+            </Viewport>
             <h5>
-                Loading attachment previews
+                Mixed attachments
             </h5>
-            <h5>
-                Preview overlay
-            </h5>
-            <h5>
-                Uploading
-            </h5>
-            <h5>
-                Drag and drop
-            </h5>
-            <h5>
-                Read only
-            </h5>
-            <h5>
-                Inline
-            </h5>
-            <h5>
-                Expanded
-            </h5>
-            <h5>
-                Error not found
-            </h5>
-            <h5>
-                Image loading indicator
-            </h5>
+            <Viewport>
+                <Cell>
+                    <AttachmentField
+                        id={'fld1'}
+                        contextId={'recordListItem'}
+                        roleId={'readOnly'}
+                        attachments={[{
+                            id: '1',
+                            type: 'video/ogg',
+                            filename: 'Video',
+                            thumbnails: null,
+                            url: 'https://www.w3schools.com/html/mov_bbb.ogg'
+                        }, {
+                            id: '2',
+                            type: 'audio/mpeg',
+                            filename: 'Audio',
+                            thumbnails: null,
+                            url: 'https://dl.airtable.com/AILblIU3RJfJTtudwUE8_%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%A0%E0%B8%97'
+                        }, {
+                            id: '3',
+                            type: 'image/jpeg',
+                            filename: `Image`,
+                            thumbnails: {
+                                small: {
+                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
+                                },
+                                medium: {
+                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
+                                },
+                                large: {
+                                    url: 'https://source.unsplash.com/featured/800x720?wanderlust'
+                                },
+                            },
+                            url: 'https://source.unsplash.com/featured/800x720?wanderlust'
+                        }, {
+                            id: '4',
+                            type: 'image/gif',
+                            filename: 'GIF',
+                            thumbnails: {
+                                small: {
+                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                                },
+                                medium: {
+                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                                },
+                                large: {
+                                    url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                                },
+                            },
+                            url: 'https://media.giphy.com/media/1wqqlaQ7IX3TXibXZE/giphy.gif'
+                        }]}
+                    />
+                </Cell>
+            </Viewport>
         </div>
     }
 }
