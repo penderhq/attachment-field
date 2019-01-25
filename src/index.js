@@ -13,43 +13,43 @@ const THUMBNAIL_SHAPE = PropTypes.shape({
 export default class AttachmentField extends React.Component {
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
-        contextId: PropTypes.oneOf(['recordDetail', 'recordGridRow', 'recordGalleryCard', 'recordListItem']),
-        roleId: PropTypes.oneOf(['editor', 'readOnly']),
-        uploads: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                filename: PropTypes.string,
-                url: PropTypes.string.isRequired,
-                progress: PropTypes.string.isRequired
-            })
-        ),
-        attachments: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                filename: PropTypes.string.isRequired,
-                size: PropTypes.number,
-                type: PropTypes.oneOf([
-                    'image/jpeg',
-                    'image/jpg',
-                    'image/png',
-                    'image/gif',
-                    'audio/mpeg',
-                    'video/mp4',
-                    'video/ogg'
-                ]).isRequired,
-                thumbnails: PropTypes.shape({
-                    small: THUMBNAIL_SHAPE,
-                    medium: THUMBNAIL_SHAPE,
-                    large: THUMBNAIL_SHAPE,
-                })
-            })
-        ),
-        onCreate: PropTypes.func,
-        onRemove: PropTypes.func,
-        onRename: PropTypes.func,
-        onClear: PropTypes.func,
-        onSort: PropTypes.func
+        // id: PropTypes.string.isRequired,
+        // contextId: PropTypes.oneOf(['recordDetail', 'recordGridRow', 'recordGalleryCard', 'recordListItem']),
+        // roleId: PropTypes.oneOf(['editor', 'readOnly']),
+        // uploads: PropTypes.arrayOf(
+        //     PropTypes.shape({
+        //         id: PropTypes.string.isRequired,
+        //         filename: PropTypes.string,
+        //         url: PropTypes.string.isRequired,
+        //         progress: PropTypes.string.isRequired
+        //     })
+        // ),
+        // attachments: PropTypes.arrayOf(
+        //     PropTypes.shape({
+        //         id: PropTypes.string.isRequired,
+        //         filename: PropTypes.string.isRequired,
+        //         size: PropTypes.number,
+        //         type: PropTypes.oneOf([
+        //             'image/jpeg',
+        //             'image/jpg',
+        //             'image/png',
+        //             'image/gif',
+        //             'audio/mpeg',
+        //             'video/mp4',
+        //             'video/ogg'
+        //         ]).isRequired,
+        //         thumbnails: PropTypes.shape({
+        //             small: THUMBNAIL_SHAPE,
+        //             medium: THUMBNAIL_SHAPE,
+        //             large: THUMBNAIL_SHAPE,
+        //         })
+        //     })
+        // ),
+        // onCreate: PropTypes.func,
+        // onRemove: PropTypes.func,
+        // onRename: PropTypes.func,
+        // onClear: PropTypes.func,
+        // onSort: PropTypes.func
     }
 
     render() {

@@ -20,8 +20,8 @@ class AttachmentItem extends React.Component {
 
     render() {
 
-        const {type} = this.props.attachment
-        const Preview = previews[type]
+        const {typeId} = this.props
+        const Preview = previews[typeId]
 
         return (
             <div

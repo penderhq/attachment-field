@@ -7,12 +7,12 @@ export default class Video extends React.Component {
 
     state = {
         playing: false,
-        hidePlayButton: false
+        hidePlayButton: true
     }
 
     render() {
 
-        const {url, type} = this.props.attachment
+        const {url, typeId} = this.props
 
         return (
             <div
@@ -26,6 +26,8 @@ export default class Video extends React.Component {
                     ref={'video'}
                     onPlay={this.handlePlay}
                     onPause={this.handlePause}
+                    autoPlay={true}
+                    muted={true}
                     className={css`
                         min-width: 100%;
                         min-height: 100%;
@@ -37,7 +39,7 @@ export default class Video extends React.Component {
                         transform: translate(-50%,-50%);
                     `}
                 >
-                    <source src={url} type={type}/>
+                    <source src={url} type={typeId}/>
                     Your browser does not support the video tag.
                 </video>
                 <div

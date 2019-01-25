@@ -7,7 +7,7 @@ const logger = createLogger({
     stateTransformer: state => state.toJS()
 })
 
-export default createStore(
+export default () => createStore(
     dispatch,
     initialState,
     applyMiddleware(logger)

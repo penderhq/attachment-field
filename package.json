@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "emotion": "^9.2.12",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-dropzone": "^8.0.3"
   },
   "peerDependencies": {
     "react": "16.x"

@@ -195,7 +195,7 @@ const Thumbnail = ({onClick, active, url}) => (
 const THUMBNAIL_SHAPE = PropTypes.shape({
     height: PropTypes.number,
     width: PropTypes.number,
-    url: PropTypes.string.isRequired
+    url: PropTypes.string
 })
 
 export default class AttachmentViewer extends React.Component {
@@ -249,7 +249,7 @@ export default class AttachmentViewer extends React.Component {
             'video/ogg': NotSupported
         }
 
-        const Attachment = types[attachment.type]
+        const Attachment = types[attachment.typeId] || NotSupported
 
         return (
             <Viewer
