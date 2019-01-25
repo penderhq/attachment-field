@@ -28,10 +28,14 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
     "nwb": "0.23.x",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6"
   },
   "author": "",
   "homepage": "",

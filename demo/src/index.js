@@ -3,6 +3,7 @@ import sample from 'lodash/sample'
 import times from 'lodash/times'
 import {css, injectGlobal} from 'emotion'
 import {render} from 'react-dom'
+import Example from './Example'
 import AttachmentField from '../../src'
 
 injectGlobal`
@@ -66,16 +67,16 @@ const generateAttachment = (i) => {
         filename: `${cat} ${i}`,
         thumbnails: {
             small: {
-                url: `https://source.unsplash.com/featured/800x720?${cat}`
+                url: `https://source.unsplash.com/random/800x720`
             },
             medium: {
-                url: `https://source.unsplash.com/featured/800x720?${cat}`
+                url: `https://source.unsplash.com/random/800x720`
             },
             large: {
-                url: `https://source.unsplash.com/featured/800x720?${cat}`
+                url: `https://source.unsplash.com/random/800x720`
             },
         },
-        url: `https://source.unsplash.com/featured/800x720?${cat}`
+        url: `https://source.unsplash.com/random/800x720`
     }
 }
 
@@ -95,11 +96,7 @@ class Demo extends React.Component {
             </h4>
             <h5>No attachments</h5>
             <Viewport>
-                <AttachmentField
-                    id={'fld1'}
-                    contextId={'recordDetail'}
-                    roleId={'readOnly'}
-                />
+                <Example/>
             </Viewport>
             <h5>30 images (image/jpeg)</h5>
             <ul>

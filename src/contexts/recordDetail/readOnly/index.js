@@ -1,10 +1,10 @@
 import React from 'react'
 import {css} from 'emotion'
-import Image from './../../types/Image'
-import Audio from './../../types/Audio'
-import Video from './../../types/Video'
-import Portal from './../../Portal'
-import AttachmentViewer from './../../attachment-viewer'
+import Image from './../../../types/Image'
+import Audio from './../../../types/Audio'
+import Video from './../../../types/Video'
+import Portal from './../../../Portal'
+import AttachmentViewer from './../../../attachment-viewer'
 
 const previews = {
     'image/jpeg': Image,

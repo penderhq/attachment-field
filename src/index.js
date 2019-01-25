@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RecordDetail from './contexts/recordDetail'
+import RecordDetailEditor from './contexts/recordDetail/editor'
+import RecordDetailReadOnly from './contexts/recordDetail/readOnly'
 import RecordGalleryCard from './contexts/recordGalleryCard'
 
 const THUMBNAIL_SHAPE = PropTypes.shape({
@@ -55,10 +56,20 @@ export default class AttachmentField extends React.Component {
 
         const {roleId, contextId} = this.props
 
-        if (contextId === 'recordDetail') {
+        if (contextId === 'recordDetail' && roleId === 'editor') {
 
             return (
-                <RecordDetail
+                <RecordDetailEditor
+                    {...this.props}
+                />
+            )
+        }
+
+
+        if (contextId === 'recordDetail' && roleId === 'readOnly') {
+
+            return (
+                <RecordDetailReadOnly
                     {...this.props}
                 />
             )
