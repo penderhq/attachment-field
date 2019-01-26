@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 import Dropzone from 'react-dropzone'
 import {css, cx, keyframes} from 'emotion'
 import get from 'lodash/get'
-import icons from '../../../icons'
-import Image from './../../../types/Image'
-import Audio from './../../../types/Audio'
-import Video from './../../../types/Video'
-import Portal from './../../../Portal'
-import AttachmentViewer from './../../../attachment-viewer'
+import icons from '../../icons'
+import Image from './../../types/Image'
+import Audio from './../../types/Audio'
+import Video from './../../types/Video'
+import Portal from './../../Portal'
+import AttachmentViewer from './../../attachment-viewer'
 
 const spinScale = keyframes`
 0% {
@@ -101,7 +101,7 @@ class Attachment extends React.Component {
 
     render() {
 
-        const {typeId} = this.props
+        const {typeId, enableRename, enableDownload, enableRemove} = this.props
 
         const Preview = previews[typeId]
 
@@ -216,24 +216,24 @@ class Attachment extends React.Component {
                                 >
                                     {this.props.filename}
                                 </div>
-                                {this.state.hover ? (
+                                {enableRename && this.state.hover ? (
                                     <div className={css`margin-right: 8px;`}>
-                                        <div onClick={this.handleRename}>
+                                        <div className={css`display: flex;`} onClick={this.handleRename}>
                                             {icons.pencil({height: 16})}
                                         </div>
                                     </div>
                                 ) : null}
-                                {this.state.hover ? (
+                                {enableDownload && this.state.hover ? (
                                     <div className={css`margin-right: 8px;`}>
                                         <a target={'_blank'} href={this.props.url}
-                                           className={css`color: currentColor;`}>
+                                           className={css`display:flex;color: currentColor;`}>
                                             {icons.download({height: 16})}
                                         </a>
                                     </div>
                                 ) : null}
-                                {this.state.hover ? (
+                                {enableRemove && this.state.hover ? (
                                     <div className={css`margin-right: 8px;`}>
-                                        <div onClick={this.handleRemove}>
+                                        <div className={css`display: flex;`} onClick={this.handleRemove}>
                                             {icons.trash({height: 16})}
                                         </div>
                                     </div>
@@ -244,10 +244,6 @@ class Attachment extends React.Component {
                 )}
             </div>
         )
-    }
-
-    handleDownload = () => {
-        window.location.open
     }
 
     handleRename = () => {
@@ -349,9 +345,10 @@ export default class AttachmentField extends React.Component {
                                                     justify-content: space-between;
                                                 `}
                                             >
-                                                <button
-                                                    type={'button'}
-                                                    className={css`
+                                                {this.props.roleId === 'editor' ? (
+                                                    <button
+                                                        type={'button'}
+                                                        className={css`
                                             background: rgba(0, 0, 0, 0.1);
                                             padding: 8px 16px;
                                             font-weight: 700;
@@ -359,21 +356,23 @@ export default class AttachmentField extends React.Component {
                                             cursor: pointer;
                                             border-radius: 4px;
                                         `}
-                                                    onClick={this.handleSelect}
-                                                >
-                                                    <div
-                                                        className={css`
+                                                        onClick={this.handleSelect}
+                                                    >
+                                                        <div
+                                                            className={css`
                                                              display: flex;
                                             align-items: center;
                                                         `}
-                                                    >
-                                                        {icons.paperclip({
-                                                            height: 12,
-                                                            className: css`margin-right: 8px;`
-                                                        })}
-                                                        Attach files
-                                                    </div>
-                                                </button>
+                                                        >
+                                                            {icons.paperclip({
+                                                                height: 12,
+                                                                className: css`margin-right: 8px;`
+                                                            })}
+                                                            Attach files
+                                                        </div>
+                                                    </button>
+                                                ) : null}
+
                                                 {this.props.uploading ? (
                                                     <div
                                                         className={css`
@@ -420,9 +419,12 @@ export default class AttachmentField extends React.Component {
                                                                     filename={attachment.filename}
                                                                     typeId={attachment.typeId}
                                                                     previewUrl={get(attachment, 'thumbnails.large.url')}
+                                                                    enableRename={this.props.roleId === 'editor'}
+                                                                    enableDownload={true}
+                                                                    enableRemove={this.props.roleId === 'editor'}
                                                                     onClick={() => this.handleAttachmentViewerOpen({index})}
-                                                                    onRemove={this.props.onRemoveAttachment}
-                                                                    onRename={this.props.onRenameAttachment}
+                                                                    onRemove={this.handleRemoveAttachment}
+                                                                    onRename={this.handleRenameAttachment}
                                                                 />
                                                             </div>
                                                         )
@@ -464,6 +466,29 @@ export default class AttachmentField extends React.Component {
                 ) : null}
             </div>
         )
+    }
+
+    handleRenameAttachment = ({id, filename}) => {
+
+        if (this.props.onRenameAttachment) {
+
+            this.props.onRenameAttachment({
+                id: this.props.id,
+                attachmentId: id,
+                filename
+            })
+        }
+    }
+
+    handleRemoveAttachment = ({id}) => {
+
+        if (this.props.onRemoveAttachment) {
+
+            this.props.onRemoveAttachment({
+                id: this.props.id,
+                attachmentId: id
+            })
+        }
     }
 
     handleSelect = (e) => {

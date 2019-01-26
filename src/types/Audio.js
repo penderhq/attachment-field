@@ -11,7 +11,7 @@ export default class Audio extends React.Component {
 
     render() {
 
-        const {type, url} = this.props.attachment
+        const {typeId, url} = this.props
 
         return (
             <div
@@ -28,7 +28,7 @@ export default class Audio extends React.Component {
                     onPause={this.handlePause}
                     onPlay={this.handlePlay}
                 >
-                    <source src={url} type={type}/>
+                    <source src={url} type={typeId}/>
                     Your browser does not support the audio element.
                 </audio>
                 <PlayButton

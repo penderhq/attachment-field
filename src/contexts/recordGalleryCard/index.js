@@ -2,9 +2,9 @@ import React from 'react'
 import get from 'lodash/get'
 import {css} from 'emotion'
 
-const Attachment = ({attachment}) => {
+const Attachment = ({thumbnails}) => {
 
-    const url = get(attachment, 'thumbnails.small.url')
+    const url = get(thumbnails, 'small.url')
 
     return (
         <div
@@ -98,7 +98,7 @@ const AttachmentField = ({attachments}) => (
                         `}
                     >
                         <Attachment
-                            attachment={attachment}
+                            thumbnails={attachment.thumbnails}
                         />
                     </div>
                 )) : null}

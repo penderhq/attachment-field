@@ -4,6 +4,8 @@ import get from 'lodash/get'
 import PropTypes from 'prop-types'
 import icons from './../icons'
 import Image from './types/Image'
+import Audio from './types/Audio'
+import Video from './types/Video'
 import NotSupported from './types/NotSupported'
 
 const ArrowLeft = ({onClick}) => (
@@ -244,9 +246,9 @@ export default class AttachmentViewer extends React.Component {
             'image/jpg': Image,
             'image/png': Image,
             'image/gif': Image,
-            'audio/mpeg': NotSupported,
-            'video/mp4': NotSupported,
-            'video/ogg': NotSupported
+            'audio/mpeg': Audio,
+            'video/mp4': Video,
+            'video/ogg': Video
         }
 
         const Attachment = types[attachment.typeId] || NotSupported
@@ -284,7 +286,8 @@ export default class AttachmentViewer extends React.Component {
                 />
                 <Container>
                     <Attachment
-                        attachment={attachment}
+                        typeId={attachment.typeId}
+                        url={attachment.url}
                         onClick={e => {
                             e.stopPropagation()
                         }}

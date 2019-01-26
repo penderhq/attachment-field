@@ -2,9 +2,9 @@ import React from 'react'
 import {css} from 'emotion'
 
 const Attachment = ({url, onClick}) => (
-    <img
+    <video
+        controls
         src={url}
-        onClick={onClick}
         className={css`
             position: absolute;
             max-width: 100%;

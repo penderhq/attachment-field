@@ -20,6 +20,7 @@ export default class Video extends React.Component {
                     position: relative;
                     width: 200px;
                     height: 200px;
+                    overflow: hidden;
                 `}
             >
                 <video
@@ -33,6 +34,8 @@ export default class Video extends React.Component {
                         min-height: 100%;
                         width: auto;
                         height: auto;
+                        max-width: 400px;
+                        max-height: 400px;
                         position: absolute;
                         top: 50%;
                         left: 50%;
