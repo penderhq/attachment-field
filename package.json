@@ -21,7 +21,7 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "emotion": "^9.2.12",
+    "emotion": "^10.0.6",
     "prop-types": "^15.6.2",
     "react-dropzone": "^8.0.3"
   },
