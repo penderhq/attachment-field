@@ -1,5 +1,7 @@
 # ![AttachmentField](https://user-images.githubusercontent.com/44801418/48063098-93a3f380-e1f6-11e8-95ef-5a9d39ef96ae.png) AttachmentField
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/entercosmos/attachment-field.svg)](https://greenkeeper.io/)
+
 [![npm package][npm-badge]][npm]
 
 Used for (pre)viewing and organizing a list of attachments.
