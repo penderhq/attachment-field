@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Dropzone from 'react-dropzone'
 import {css, cx, keyframes} from 'emotion'
 import get from 'lodash/get'
+import Button from '@cmds/button'
 import icons from '../../icons'
 import Image from './../../types/Image'
 import Audio from './../../types/Audio'
@@ -73,15 +74,27 @@ class AttachmentFilenameInput extends React.Component {
         return (
             <input
                 className={css`
-                    background-color: rgba(0,0,0,0.05);
+                    -moz-appearance: none;
+                    -webkit-appearance: none;
+                    -webkit-transition: border-color .15s ease-in-out;
+                    appearance: none;
+                    background-color: #fff;
+                    border: 1px solid #d9d9d9;
                     border-radius: 3px;
-                    border: none;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    display: flex;
-                    min-width: 0;
-                    min-height: 0;
-                    flex: 1 1 auto;
+                    color: #191919;
+                    display: block;
+                    font-size: 16px;
+                    height: 25px;
+                    line-height: 1.42857;
+                    padding: 5px;
+                    transition: border-color .15s ease-in-out;
+                    width: 100%;
+                    &:focus {
+                        -webkit-transition-duration: 0s;
+                        border-color: #07f;
+                        outline: 0;
+                        transition-duration: 0s;
+                    }
                 `}
                 type="text"
                 value={this.props.value}
@@ -113,10 +126,10 @@ class Attachment extends React.Component {
                     width: 200px;
                     border-radius: 6px;
                     overflow: hidden;
-                    box-shadow: 0 0 0 2px hsla(0,0%,0%,0.05);
+                    box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
                     cursor: pointer;
                     &:hover {
-                        box-shadow: 0 0 0 2px hsla(0,0%,0%,0.2);
+                        box-shadow: 0 0 0 2px #07f;
                     }
                 `}
                 onMouseEnter={() => this.setState({hover: true})}
@@ -300,17 +313,13 @@ export default class AttachmentField extends React.Component {
         return (
             <div>
                 <div
-                    className={css`
-                        background-color: #f9f9f9;
-                    `}
                 >
                     <Dropzone
                         ref={ref => {
                             this.dropzone = ref
                         }}
-                        className="dropzone"
                         style={{position: 'relative'}}
-                        disableClick={true}
+                        onClick={evt => evt.preventDefault()}
                         onDragEnter={this.handleDragEnter}
                         onDragLeave={this.handleDragLeave}
                         onDrop={this.handleDrop}
@@ -319,6 +328,11 @@ export default class AttachmentField extends React.Component {
                             return (
                                 <div
                                     {...getRootProps()}
+                                    className={css`
+                                        &:focus {
+                                            outline: none;
+                                        }
+                                    `}
                                 >
                                     <input {...getInputProps()} />
                                     {isDragActive ? (
@@ -346,31 +360,12 @@ export default class AttachmentField extends React.Component {
                                                 `}
                                             >
                                                 {this.props.roleId === 'editor' ? (
-                                                    <button
-                                                        type={'button'}
-                                                        className={css`
-                                            background: rgba(0, 0, 0, 0.1);
-                                            padding: 8px 16px;
-                                            font-weight: 700;
-                                            border: none;
-                                            cursor: pointer;
-                                            border-radius: 4px;
-                                        `}
+                                                    <Button
+                                                        icon={icons.paperclip}
                                                         onClick={this.handleSelect}
                                                     >
-                                                        <div
-                                                            className={css`
-                                                             display: flex;
-                                            align-items: center;
-                                                        `}
-                                                        >
-                                                            {icons.paperclip({
-                                                                height: 12,
-                                                                className: css`margin-right: 8px;`
-                                                            })}
-                                                            Attach files
-                                                        </div>
-                                                    </button>
+                                                        Attach files
+                                                    </Button>
                                                 ) : null}
 
                                                 {this.props.uploading ? (

@@ -6,7 +6,7 @@ import RecordGalleryCard from './contexts/recordGalleryCard'
 const THUMBNAIL_SHAPE = PropTypes.shape({
     height: PropTypes.number,
     width: PropTypes.number,
-    url: PropTypes.string.isRequired
+    url: PropTypes.string
 })
 
 export default class AttachmentField extends React.Component {
@@ -21,7 +21,7 @@ export default class AttachmentField extends React.Component {
                 id: PropTypes.string.isRequired,
                 filename: PropTypes.string.isRequired,
                 size: PropTypes.number,
-                type: PropTypes.oneOf([
+                typeId: PropTypes.oneOf([
                     'image/jpeg',
                     'image/jpg',
                     'image/png',
