@@ -38,6 +38,7 @@ const animateInfinite = css`
 
 const previews = {
     'application/pdf': Image,
+    'image/jpeg': Image,
     'image/jpg': Image,
     'image/png': Image,
     'image/gif': Image,
