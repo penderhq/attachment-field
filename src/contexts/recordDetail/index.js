@@ -42,6 +42,7 @@ const previews = {
     'image/jpg': Image,
     'image/png': Image,
     'image/gif': Image,
+    'audio/mp3': Audio,
     'audio/mpeg': Audio,
     'video/mp4': Video,
     'video/ogg': Video
