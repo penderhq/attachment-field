@@ -8,6 +8,7 @@ import icons from '../../icons'
 import Image from './../../types/Image'
 import Audio from './../../types/Audio'
 import Video from './../../types/Video'
+import FilePreview from './../../types/File'
 import Portal from './../../Portal'
 import AttachmentViewer from './../../attachment-viewer'
 
@@ -36,7 +37,7 @@ const animateInfinite = css`
 `
 
 const previews = {
-    'image/jpeg': Image,
+    'application/pdf': Image,
     'image/jpg': Image,
     'image/png': Image,
     'image/gif': Image,
@@ -116,7 +117,7 @@ class Attachment extends React.Component {
 
         const {typeId, enableRename, enableDownload, enableRemove} = this.props
 
-        const Preview = previews[typeId]
+        const Preview = previews[typeId] || FilePreview
 
         return (
             <div

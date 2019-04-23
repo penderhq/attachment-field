@@ -21,15 +21,7 @@ export default class AttachmentField extends React.Component {
                 id: PropTypes.string.isRequired,
                 filename: PropTypes.string.isRequired,
                 size: PropTypes.number,
-                typeId: PropTypes.oneOf([
-                    'image/jpeg',
-                    'image/jpg',
-                    'image/png',
-                    'image/gif',
-                    'audio/mpeg',
-                    'video/mp4',
-                    'video/ogg'
-                ]).isRequired,
+                typeId: PropTypes.string.isRequired,
                 thumbnails: PropTypes.shape({
                     small: THUMBNAIL_SHAPE,
                     medium: THUMBNAIL_SHAPE,

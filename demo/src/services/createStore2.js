@@ -4,6 +4,8 @@ import randomJpg from './randomJpg'
 import randomAudio from './randomAudio'
 import randomGif from './randomGif'
 import randomVideo from './randomVideo'
+import randomZip from './randomZip'
+import randomPdf from './randomPdf'
 
 export default () => {
 
@@ -21,6 +23,8 @@ export default () => {
     createAttachment(randomAudio)
     createAttachment(randomGif)
     createAttachment(randomVideo)
+    createAttachment(randomZip)
+    createAttachment(randomPdf)
 
     return store
 }
