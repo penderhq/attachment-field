@@ -1,6 +1,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
-import {css, injectGlobal} from 'emotion'
+import {css, cx, injectGlobal} from 'emotion'
+import {Canvas, Paragraph, Box, Heading} from '@cmds/demo-utils'
 import {render} from 'react-dom'
 import Example from './Example'
 import createStore1 from './services/createStore1'
@@ -12,6 +13,7 @@ const store2 = createStore2()
 injectGlobal`
     body {
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        margin: 0;
     }
     * {
         box-sizing: border-box;
@@ -41,14 +43,24 @@ const RecordListItem = ({children}) => (
     </div>
 )
 
-const Context = ({contextId, roleId}) => (
+const Note = ({hint, children}) => (
     <div
-        className={css`
-            margin-top: 32px;
-            margin-bottom: 24px;
-        `}
+        className={cx(
+            css`
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgb(0, 0, 0);
+            padding: 16px 24px;
+            border-radius: 4px;
+            background: rgb(255, 255, 255);
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(221, 221, 221);
+            border-image: initial;
+        `, hint ? css`border-color: #07f;` : ''
+        )}
     >
-        <strong>Context:</strong> {contextId}, <strong>Role:</strong> {roleId}
+        {children}
     </div>
 )
 
@@ -57,65 +69,96 @@ class Demo extends React.Component {
     render() {
 
         return (
-            <div>
-                <h1>AttachmentField Demo</h1>
+            <Canvas>
                 <div
                     className={css`
-                        background-color: #f4e395;
-                        color: rgba(0, 0, 0, 0.8);
-                        padding: 8px 16px;
-                        border-radius: 6px;
-                        margin-bottom: 16px;
+                        margin-bottom: 50px;
                     `}
                 >
-                    The attachments that you upload will be replaced with fake files for the purpose of this demo.
+                    <Note hint>
+                        The attachments that you upload will be replaced with fake files for the purpose of this demo.
+                    </Note>
                 </div>
-                <h2>
-                    Empty
-                </h2>
-                <Context contextId={'recordDetail'} roleId={'editor'} />
-                <Provider store={store1}>
-                    <Example
-                        contextId={'recordDetail'}
-                        roleId={'editor'}
-                    />
-                </Provider>
-                <h2>
-                    Different file types
-                </h2>
-                <Context contextId={'recordDetail'} roleId={'editor'} />
-                <Provider store={store2}>
-                    <Example
-                        contextId={'recordDetail'}
-                        roleId={'editor'}
-                    />
-                </Provider>
-                <Context contextId={'recordDetail'} roleId={'readOnly'} />
-                <Provider store={store2}>
-                    <Example
-                        contextId={'recordDetail'}
-                        roleId={'readOnly'}
-                    />
-                </Provider>
-                <Context contextId={'recordGalleryCard'} roleId={'readOnly'} />
-                <Provider store={store2}>
-                    <RecordGalleryCard>
+                <Heading>
+                    Record Detail Context
+                </Heading>
+                <Paragraph>
+                    Attachment Field — No attachments and editor role
+                </Paragraph>
+                <Box>
+                    <Provider store={store1}>
                         <Example
-                            contextId={'recordGalleryCard'}
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
+                    Attachment Field — No attachments and read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordDetail'}
                             roleId={'readOnly'}
                         />
-                    </RecordGalleryCard>
-                </Provider>
-                <Context contextId={'recordListItem'} roleId={'readOnly'} />
-                <Provider store={store2}>
-                    <RecordListItem>
+                    </Provider>
+                </Box>
+                <Paragraph>
+                    Attachment Field — With different file types and editor role
+                </Paragraph>
+                <Box>
+                    <Provider store={store2}>
                         <Example
-                            contextId={'recordListItem'}
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
+                    Attachment Field — With read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <Example
+                            contextId={'recordDetail'}
                             roleId={'readOnly'}
                         />
-                    </RecordListItem>
-                </Provider>
-            </div>
+                    </Provider>
+                </Box>
+                <Heading>
+                    Record Gallery Card Context
+                </Heading>
+                <Paragraph>
+                    Attachment Field — With read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <RecordGalleryCard>
+                            <Example
+                                contextId={'recordGalleryCard'}
+                                roleId={'readOnly'}
+                            />
+                        </RecordGalleryCard>
+                    </Provider>
+                </Box>
+                <Heading>
+                    Record List Item Context
+                </Heading>
+                <Paragraph>
+                    Attachment Field — With read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <RecordListItem>
+                            <Example
+                                contextId={'recordListItem'}
+                                roleId={'readOnly'}
+                            />
+                        </RecordListItem>
+                    </Provider>
+                </Box>
+            </Canvas>
         )
     }
 }
