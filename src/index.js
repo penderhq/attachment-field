@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RecordDetailEditor from './contexts/recordDetail'
 import RecordGalleryCard from './contexts/recordGalleryCard'
+import defaultEmptyRenderer from './defaultEmptyRenderer'
 
 const THUMBNAIL_SHAPE = PropTypes.shape({
     height: PropTypes.number,
@@ -42,11 +43,14 @@ export default class AttachmentField extends React.Component {
 
         const {roleId, contextId} = this.props
 
+        const props = this.props
+
         if (contextId === 'recordDetail') {
 
             return (
                 <RecordDetailEditor
-                    {...this.props}
+                    {...props}
+                    emptyRenderer={props.emptyRenderer || defaultEmptyRenderer}
                 />
             )
         }
@@ -55,7 +59,8 @@ export default class AttachmentField extends React.Component {
 
             return (
                 <RecordGalleryCard
-                    {...this.props}
+                    {...props}
+                    emptyRenderer={props.emptyRenderer || defaultEmptyRenderer}
                 />
             )
         }
@@ -64,7 +69,8 @@ export default class AttachmentField extends React.Component {
 
             return (
                 <RecordGalleryCard
-                    {...this.props}
+                    {...props}
+                    emptyRenderer={props.emptyRenderer || defaultEmptyRenderer}
                 />
             )
         }

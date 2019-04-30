@@ -21,19 +21,21 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "@cmds/demo-utils": "0.2.0",
     "prop-types": "^15.6.2",
     "react-dropzone": "^8.0.3"
   },
   "peerDependencies": {
-    "@cmds/button": "0.x",
-    "@cmds/icons": "0.x",
+    "@cmds/button": "^0.1.0",
+    "@cmds/icons": "^0.2.0",
+    "@cmds/spinner": "^0.1.0",
     "emotion": "9.x",
     "react": "16.x"
   },
   "devDependencies": {
     "@cmds/button": "^0.1.0",
+    "@cmds/demo-utils": "^0.3.0",
     "@cmds/icons": "^0.2.0",
+    "@cmds/spinner": "^0.1.0",
     "emotion": "^9.2.12",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",

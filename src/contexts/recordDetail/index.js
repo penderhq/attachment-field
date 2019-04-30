@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone'
 import {css, cx, keyframes} from 'emotion'
 import get from 'lodash/get'
 import Button from '@cmds/button'
+import spinner from '@cmds/spinner'
 import icons from '../../icons'
 import Image from './../../types/Image'
 import Audio from './../../types/Audio'
@@ -11,30 +12,6 @@ import Video from './../../types/Video'
 import FilePreview from './../../types/File'
 import Portal from './../../Portal'
 import AttachmentViewer from './../../attachment-viewer'
-
-const spinScale = keyframes`
-0% {
-    transform: rotate(0) scale(1);
-}
-
-50% {
-    transform: rotate(360deg) scale(.9);
-}
-
-100% {
-    transform: rotate(720deg) scale(1);
-}
-`
-
-const animateSpinScale = css`
-    animation-name: ${spinScale};
-    animation-duration: 1800ms;
-    animation-timing-function: cubic-bezier(.785, .135, .15, .86);
-`
-
-const animateInfinite = css`
-    animation-iteration-count: infinite;
-`
 
 const previews = {
     'application/pdf': Image,
@@ -145,6 +122,7 @@ class Attachment extends React.Component {
                         left: 0;
                         right: 0;
                         bottom: 40px;
+                        background-color: #f9f9f9;
                     `}
                     onClick={this.props.onClick}
                 >
@@ -356,7 +334,6 @@ export default class AttachmentField extends React.Component {
                                         <div>
                                             <div
                                                 className={css`
-                                                    margin-bottom: 16px;
                                                     display: flex;
                                                     align-items: center;
                                                     justify-content: space-between;
@@ -366,10 +343,15 @@ export default class AttachmentField extends React.Component {
                                                     <Button
                                                         icon={icons.paperclip}
                                                         onClick={this.handleSelect}
+                                                        className={css`
+                                                            margin-bottom: 24px;
+                                                        `}
                                                     >
                                                         Attach files
                                                     </Button>
-                                                ) : null}
+                                                ) : (
+                                                    <div/>
+                                                )}
 
                                                 {this.props.uploading ? (
                                                     <div
@@ -377,14 +359,14 @@ export default class AttachmentField extends React.Component {
                                                         align-items: center;
                                                         flex: none;
                                                         display: flex;
+                                                        margin-bottom: 24px;
                                                     `}
                                                     >
                                                         <div className={css`margin-right: 8px;font-size:12px;`}>
                                                             Uploading
                                                         </div>
-                                                        {icons.spinner({
-                                                            width: 16.2,
-                                                            className: cx(animateSpinScale, animateInfinite)
+                                                        {spinner({
+                                                            width: 16.2
                                                         })}
                                                     </div>
                                                 ) : null}
@@ -392,10 +374,10 @@ export default class AttachmentField extends React.Component {
                                             {this.props.attachments.length ? (
                                                 <div
                                                     className={css`
-                                                    margin-top: -6px;
-                                                    margin-bottom: -6px;
-                                                    margin-left: -6px;
-                                                    margin-right: -6px;
+                                                    margin-top: -12px;
+                                                    margin-bottom: -12px;
+                                                    margin-left: -12px;
+                                                    margin-right: -12px;
                                                     display: flex;
                                                     flex-wrap: wrap;
                                                 `}
@@ -406,7 +388,7 @@ export default class AttachmentField extends React.Component {
                                                             <div
                                                                 key={attachment.id}
                                                                 className={css`
-                                                            padding: 6px;
+                                                            padding: 12px;
                                                         `}
                                                             >
                                                                 <Attachment
@@ -437,10 +419,14 @@ export default class AttachmentField extends React.Component {
                                                         align-items: center;
                                                     `}
                                                 >
-                                                    {icons.download({width: 16})}
-                                                    <div className={css`font-weight: 700;margin-left: 8px;`}>Drop files
-                                                        here
-                                                    </div>
+                                                    {this.props.roleId === 'editor' ? (
+                                                        <React.Fragment>
+                                                            {icons.download({width: 16})}
+                                                            <div className={css`font-weight: 700;margin-left: 8px;`}>Drop files
+                                                                here
+                                                            </div>
+                                                        </React.Fragment>
+                                                    ) : this.props.emptyRenderer()}
                                                 </div>
                                             )}
                                         </div>

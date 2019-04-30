@@ -46,7 +46,7 @@ const Attachment = ({thumbnails}) => {
     )
 }
 
-const AttachmentField = ({attachments}) => (
+const AttachmentField = ({attachments, emptyRenderer}) => (
     <div
         className={css`
             position: relative;
@@ -80,6 +80,7 @@ const AttachmentField = ({attachments}) => (
                     align-content: flex-start;
                     overflow: hidden;
                     height: 100%;
+                    align-items: center;
                 `}
             >
                 {attachments && attachments.length ? attachments.map(attachment => (
@@ -101,7 +102,7 @@ const AttachmentField = ({attachments}) => (
                             thumbnails={attachment.thumbnails}
                         />
                     </div>
-                )) : null}
+                )) : emptyRenderer()}
             </div>
         </div>
     </div>

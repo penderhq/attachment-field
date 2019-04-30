@@ -130,6 +130,17 @@ class Demo extends React.Component {
                     Record Gallery Card Context
                 </Heading>
                 <Paragraph>
+                    Attachment Field — No attachments and read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordGalleryCard'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
                     Attachment Field — With read only role
                 </Paragraph>
                 <Box>
@@ -145,6 +156,17 @@ class Demo extends React.Component {
                 <Heading>
                     Record List Item Context
                 </Heading>
+                <Paragraph>
+                    Attachment Field — No attachments and read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordListItem'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
                 <Paragraph>
                     Attachment Field — With read only role
                 </Paragraph>

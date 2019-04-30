@@ -1,4 +1,5 @@
 import React from 'react'
+import {css} from 'emotion'
 import uniqueId from 'lodash/uniqueId'
 import {connect} from 'react-redux'
 import AttachmentField from '../../src'
