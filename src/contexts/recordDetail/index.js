@@ -25,6 +25,31 @@ const previews = {
     'video/ogg': Video
 }
 
+const EmptyState = ({children}) => (
+    <div
+        className={css`
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            @media (min-width: 720px) {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+        `}
+    >
+        <div
+            className={css`
+                color: #000;
+                font-size: 16px;
+            `}
+        >
+            {children}
+        </div>
+    </div>
+)
+
 class AttachmentFilenameInput extends React.Component {
 
     componentDidMount() {
@@ -410,6 +435,20 @@ export default class AttachmentField extends React.Component {
                                                         )
                                                     })}
                                                 </div>
+                                            ) : this.props.roleId === 'editor' ? (
+                                                <EmptyState>
+                                                    <div
+                                                        className={css`
+                                                        display: flex;
+                                                        align-items: center;
+                                                    `}
+                                                    >
+                                                        {icons.download({width: 16})}
+                                                        <div className={css`font-weight: 700;margin-left: 8px;`}>Drop files
+                                                            here
+                                                        </div>
+                                                    </div>
+                                                </EmptyState>
                                             ) : (
                                                 <div
                                                     className={css`
@@ -419,14 +458,7 @@ export default class AttachmentField extends React.Component {
                                                         align-items: center;
                                                     `}
                                                 >
-                                                    {this.props.roleId === 'editor' ? (
-                                                        <React.Fragment>
-                                                            {icons.download({width: 16})}
-                                                            <div className={css`font-weight: 700;margin-left: 8px;`}>Drop files
-                                                                here
-                                                            </div>
-                                                        </React.Fragment>
-                                                    ) : this.props.emptyRenderer()}
+                                                    {this.props.emptyRenderer()}
                                                 </div>
                                             )}
                                         </div>
