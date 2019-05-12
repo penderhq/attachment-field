@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import Dropzone from 'react-dropzone'
 import {css, cx, keyframes} from 'emotion'
 import get from 'lodash/get'
-import Button from '@cmds/button'
-import spinner from '@cmds/spinner'
+import Button from '@pndr/button'
+import spinner from '@pndr/spinner'
 import icons from '../../icons'
 import Image from './../../types/Image'
 import Audio from './../../types/Audio'
@@ -129,6 +129,7 @@ class Attachment extends React.Component {
                     position: relative;
                     height: 240px;
                     width: 200px;
+                    background-color: #fff;
                     border-radius: 6px;
                     overflow: hidden;
                     box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);

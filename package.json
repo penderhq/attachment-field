@@ -1,6 +1,6 @@
 {
-  "name": "@cmds/attachment-field",
-  "version": "0.19.0",
+  "name": "@pndr/attachment-field",
+  "version": "0.22.0",
   "description": "Used for (pre)viewing and organizing a list of attachments.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -11,7 +11,7 @@
     "umd"
   ],
   "scripts": {
-    "deploy": "cd demo/dist && surge --project ./ --domain cmds-attachment-field.surge.sh",
+    "deploy": "cd demo/dist && surge --project ./ --domain pndr-attachment-field.surge.sh",
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
     "prepublishOnly": "npm run build",
@@ -25,17 +25,17 @@
     "react-dropzone": "^8.0.3"
   },
   "peerDependencies": {
-    "@cmds/button": "^0.1.0",
-    "@cmds/icons": "^0.2.0",
-    "@cmds/spinner": "^0.1.0",
+    "@pndr/button": "x.x",
+    "@pndr/icons": "x.x",
+    "@pndr/spinner": "x.x",
     "emotion": "9.x",
     "react": "16.x"
   },
   "devDependencies": {
-    "@cmds/button": "^0.1.0",
-    "@cmds/demo-utils": "^0.3.0",
-    "@cmds/icons": "^0.2.0",
-    "@cmds/spinner": "^0.1.0",
+    "@pndr/button": "^0.4.0",
+    "@pndr/demo-utils": "^0.3.0",
+    "@pndr/icons": "^0.4.0",
+    "@pndr/spinner": "^0.1.0",
     "emotion": "^9.2.12",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",

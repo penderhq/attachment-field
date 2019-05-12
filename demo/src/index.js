@@ -1,7 +1,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import {css, cx, injectGlobal} from 'emotion'
-import {Canvas, Paragraph, Box, Heading} from '@cmds/demo-utils'
+import {Canvas, Paragraph, Box, Heading} from '@pndr/demo-utils'
 import {render} from 'react-dom'
 import Example from './Example'
 import createStore1 from './services/createStore1'
