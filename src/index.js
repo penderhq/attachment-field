@@ -15,12 +15,26 @@ export default class AttachmentField extends React.Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         contextId: PropTypes.oneOf(['recordDetail', 'recordGridRow', 'recordGalleryCard', 'recordListItem']),
+        enableAttachButton: PropTypes.bool,
         roleId: PropTypes.oneOf(['editor', 'readOnly']),
+        max: PropTypes.number,
         uploading: PropTypes.bool,
+        accept: PropTypes.arrayOf(
+            PropTypes.oneOf([
+                'application/pdf',
+                'image/jpeg',
+                'image/png',
+                'image/gif',
+                'audio/mp3',
+                'audio/mpeg',
+                'video/mp4',
+                'video/ogg'
+            ])
+        ),
         attachments: PropTypes.arrayOf(
             PropTypes.shape({
                 id: PropTypes.string.isRequired,
-                filename: PropTypes.string.isRequired,
+                filename: PropTypes.string,
                 size: PropTypes.number,
                 typeId: PropTypes.string.isRequired,
                 thumbnails: PropTypes.shape({
@@ -39,9 +53,25 @@ export default class AttachmentField extends React.Component {
         onSort: PropTypes.func
     }
 
+    static defaultProps = {
+        max: +Infinity,
+        enableRename: true,
+        enableDownload: true,
+        accept: [
+            'application/pdf',
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'audio/mp3',
+            'audio/mpeg',
+            'video/mp4',
+            'video/ogg'
+        ]
+    }
+
     render() {
 
-        const {roleId, contextId} = this.props
+        const { roleId, contextId } = this.props
 
         const props = this.props
 

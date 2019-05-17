@@ -9,7 +9,7 @@ const images = [
     'YNdEOtbwCKw'
 ]
 
-export default ({id}) => {
+export default ({id, filename = 'image/jpeg example'}) => {
 
     const img = sample(images)
 
@@ -17,7 +17,7 @@ export default ({id}) => {
         id,
         typeId: 'image/jpeg',
         url: 'https://source.unsplash.com/' + img + '/1600x900',
-        filename: 'image/jpeg example',
+        filename,
         thumbnails: {
             small: {
                 url: 'https://source.unsplash.com/' + img + '/200x110'

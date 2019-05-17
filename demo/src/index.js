@@ -6,9 +6,11 @@ import {render} from 'react-dom'
 import Example from './Example'
 import createStore1 from './services/createStore1'
 import createStore2 from './services/createStore2'
+import createStore3 from './services/createStore3'
 
 const store1 = createStore1()
 const store2 = createStore2()
+const store3 = createStore3()
 
 injectGlobal`
     body {
@@ -101,6 +103,21 @@ class Demo extends React.Component {
                         <Example
                             contextId={'recordDetail'}
                             roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
+                    Attachment Field — Max attachments, without filename
+                </Paragraph>
+                <Box>
+                    <Provider store={store3}>
+                        <Example
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                            max={1}
+                            enableRename={false}
+                            enableDownload={false}
+                            accept={['image/jpeg']}
                         />
                     </Provider>
                 </Box>

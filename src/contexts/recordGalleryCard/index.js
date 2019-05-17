@@ -54,7 +54,6 @@ const AttachmentField = ({attachments, emptyRenderer}) => (
             padding: 0;
             margin: 0;
             vertical-align: top;
-            background: #fff;
             color: #000;
             display: flex;
             flex-wrap: wrap;

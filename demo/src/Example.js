@@ -20,6 +20,10 @@ class Example extends React.Component {
                 onAttach={this.handleAttach}
                 onRemoveAttachment={this.handleRemoveAttachment}
                 onRenameAttachment={this.handleRenameAttachment}
+                max={this.props.max}
+                enableRename={this.props.enableRename}
+                enableDownload={this.props.enableDownload}
+                accept={this.props.accept}
             />
         )
     }

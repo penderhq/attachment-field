@@ -12,11 +12,11 @@ import Video from './../../types/Video'
 import FilePreview from './../../types/File'
 import Portal from './../../Portal'
 import AttachmentViewer from './../../attachment-viewer'
+import mimeTypes from 'mime-types'
 
 const previews = {
     'application/pdf': Image,
     'image/jpeg': Image,
-    'image/jpg': Image,
     'image/png': Image,
     'image/gif': Image,
     'audio/mp3': Audio,
@@ -33,6 +33,7 @@ const EmptyState = ({children}) => (
             padding: 30px;
             display: flex;
             justify-content: center;
+            border: 2px dashed #eee;
             @media (min-width: 720px) {
                 padding-top: 50px;
                 padding-bottom: 50px;
@@ -119,9 +120,11 @@ class Attachment extends React.Component {
 
     render() {
 
-        const {typeId, enableRename, enableDownload, enableRemove} = this.props
+        const {typeId, filename, enableRename, enableDownload, enableRemove} = this.props
 
         const Preview = previews[typeId] || FilePreview
+
+        const enableButtons = this.state.hover || filename === null
 
         return (
             <div
@@ -236,14 +239,14 @@ class Attachment extends React.Component {
                                 >
                                     {this.props.filename}
                                 </div>
-                                {enableRename && this.state.hover ? (
+                                {enableRename && enableButtons ? (
                                     <div className={css`margin-right: 8px;`}>
                                         <div className={css`display: flex;`} onClick={this.handleRename}>
                                             {icons.pencil({height: 16})}
                                         </div>
                                     </div>
                                 ) : null}
-                                {enableDownload && this.state.hover ? (
+                                {enableDownload && enableButtons ? (
                                     <div className={css`margin-right: 8px;`}>
                                         <a target={'_blank'} href={this.props.url}
                                            className={css`display:flex;color: currentColor;`}>
@@ -251,7 +254,7 @@ class Attachment extends React.Component {
                                         </a>
                                     </div>
                                 ) : null}
-                                {enableRemove && this.state.hover ? (
+                                {enableRemove && enableButtons ? (
                                     <div className={css`margin-right: 8px;`}>
                                         <div className={css`display: flex;`} onClick={this.handleRemove}>
                                             {icons.trash({height: 16})}
@@ -317,6 +320,13 @@ export default class AttachmentField extends React.Component {
     }
 
     render() {
+
+        let enableAttachButton = this.props.roleId === 'editor'
+
+        if (this.props.attachments.length >= this.props.max) {
+            enableAttachButton = false
+        }
+
         return (
             <div>
                 <div
@@ -325,11 +335,14 @@ export default class AttachmentField extends React.Component {
                         ref={ref => {
                             this.dropzone = ref
                         }}
+                        disabled={this.props.roleId !== 'editor'}
                         style={{position: 'relative'}}
                         onClick={evt => evt.preventDefault()}
                         onDragEnter={this.handleDragEnter}
                         onDragLeave={this.handleDragLeave}
                         onDrop={this.handleDrop}
+                        multiple={this.props.max > 1}
+                        accept={this.props.accept}
                     >
                         {({getRootProps, getInputProps, isDragActive}) => {
                             return (
@@ -349,12 +362,16 @@ export default class AttachmentField extends React.Component {
                                             align-items: center;
                                             justify-content: center;
                                             border-radius: 6px;
-                                            border: 2px dashed #000;
+                                            border: 2px dashed #07f;
+                                            color: #07f;
                                             font-weight: 700;
-                                            height: 240px;
+                                            height: 150px;
+                                            background: #f9f9f9;
                                         `}>
                                             {icons.download({width: 16})}
-                                            <div className={css`margin-left: 8px;`}>Drop to upload attachments</div>
+                                            <div className={css`margin-left: 8px;`}>
+                                                {this.props.max === 1 ? 'Drop to upload attachment' : 'Drop to upload attachments'}
+                                            </div>
                                         </div>
                                     ) : (
                                         <div>
@@ -365,7 +382,7 @@ export default class AttachmentField extends React.Component {
                                                     justify-content: space-between;
                                                 `}
                                             >
-                                                {this.props.roleId === 'editor' ? (
+                                                {enableAttachButton ? (
                                                     <Button
                                                         icon={icons.paperclip}
                                                         onClick={this.handleSelect}
@@ -373,7 +390,7 @@ export default class AttachmentField extends React.Component {
                                                             margin-bottom: 24px;
                                                         `}
                                                     >
-                                                        Attach files
+                                                        {this.props.max === 1 ? 'Attach file' : 'Attach files'}
                                                     </Button>
                                                 ) : (
                                                     <div/>
@@ -425,8 +442,8 @@ export default class AttachmentField extends React.Component {
                                                                     filename={attachment.filename}
                                                                     typeId={attachment.typeId}
                                                                     previewUrl={get(attachment, 'thumbnails.large.url')}
-                                                                    enableRename={this.props.roleId === 'editor'}
-                                                                    enableDownload={true}
+                                                                    enableRename={this.props.enableRename && this.props.roleId === 'editor'}
+                                                                    enableDownload={this.props.enableDownload}
                                                                     enableRemove={this.props.roleId === 'editor'}
                                                                     onClick={() => this.handleAttachmentViewerOpen({index})}
                                                                     onRemove={this.handleRemoveAttachment}
@@ -440,13 +457,31 @@ export default class AttachmentField extends React.Component {
                                                 <EmptyState>
                                                     <div
                                                         className={css`
-                                                        display: flex;
-                                                        align-items: center;
-                                                    `}
+                                                            display: flex;
+                                                            align-items: center;
+                                                            flex-direction: column;
+                                                        `}
                                                     >
-                                                        {icons.download({width: 16})}
-                                                        <div className={css`font-weight: 700;margin-left: 8px;`}>Drop files
-                                                            here
+                                                        <div
+                                                            className={css`
+                                                                display: flex;
+                                                                align-items: center;
+                                                                margin-bottom: 16px;
+                                                            `}
+                                                        >
+                                                            {icons.download({width: 16})}
+                                                            <div className={css`font-weight: 700;margin-left: 8px;`}>
+                                                                {this.props.max === 1 ? 'Or drop file here' : 'Or drop files here'}
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            className={css`
+                                                                font-size: 11px;
+                                                                color: #787878;
+                                                                text-align: center;
+                                                            `}
+                                                        >
+                                                            <span className={css`color: #000; font-weight: 700;`}>Supported file {this.props.accept.length === 1 ? 'type' : 'types'}:</span> {this.props.accept.map(type => '.' + mimeTypes.extension(type)).join(', ')}
                                                         </div>
                                                     </div>
                                                 </EmptyState>
