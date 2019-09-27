@@ -206,10 +206,9 @@ export default class AttachmentViewer extends React.Component {
         attachments: PropTypes.arrayOf(
             PropTypes.shape({
                 id: PropTypes.string.isRequired,
-                filename: PropTypes.string.isRequired,
+                filename: PropTypes.string,
                 type: PropTypes.oneOf([
                     'image/jpeg',
-                    'image/jpg',
                     'image/png',
                     'image/gif',
                     'audio/mpeg',
@@ -243,7 +242,6 @@ export default class AttachmentViewer extends React.Component {
 
         const types = {
             'image/jpeg': Image,
-            'image/jpg': Image,
             'image/png': Image,
             'image/gif': Image,
             'audio/mpeg': Audio,
