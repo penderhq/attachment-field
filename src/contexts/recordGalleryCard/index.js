@@ -19,7 +19,7 @@ const Attachment = ({thumbnails}) => {
             {url ? (
                 <div
                     className={css`
-                background-image: url(${url});
+                background-image: url('${url}');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center center;

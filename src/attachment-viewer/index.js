@@ -182,7 +182,7 @@ const Thumbnail = ({onClick, active, url}) => (
             background-position: center center;
             background-size: cover;
             border-radius: 3px;
-            background-image: url(${url});
+            background-image: url('${url}');
         `,
             active ? css`
                 opacity: 1;
