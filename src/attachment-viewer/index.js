@@ -286,6 +286,7 @@ export default class AttachmentViewer extends React.Component {
                     <Attachment
                         typeId={attachment.typeId}
                         url={attachment.url}
+                        previewCannotBeDisplayedLabel={this.props.previewCannotBeDisplayedLabel}
                         onClick={e => {
                             e.stopPropagation()
                         }}

@@ -122,6 +122,21 @@ class Demo extends React.Component {
                     </Provider>
                 </Box>
                 <Paragraph>
+                    Attachment Field — Max attachments, any type of attachment
+                </Paragraph>
+                <Box>
+                    <Provider store={store3}>
+                        <Example
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                            max={1}
+                            enableRename={false}
+                            enableDownload={false}
+                            accept={null}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
                     Attachment Field — With different file types and editor role
                 </Paragraph>
                 <Box>

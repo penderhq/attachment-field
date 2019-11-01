@@ -20,16 +20,7 @@ export default class AttachmentField extends React.Component {
         max: PropTypes.number,
         uploading: PropTypes.bool,
         accept: PropTypes.arrayOf(
-            PropTypes.oneOf([
-                'application/pdf',
-                'image/jpeg',
-                'image/png',
-                'image/gif',
-                'audio/mp3',
-                'audio/mpeg',
-                'video/mp4',
-                'video/ogg'
-            ])
+            PropTypes.string.isRequired
         ),
         attachments: PropTypes.arrayOf(
             PropTypes.shape({
@@ -50,13 +41,21 @@ export default class AttachmentField extends React.Component {
         onRemoveAttachment: PropTypes.func,
         onRenameAttachment: PropTypes.func,
         onClear: PropTypes.func,
-        onSort: PropTypes.func
+        onSort: PropTypes.func,
+        dropFilesHereLabel: PropTypes.string,
+        supportedFileTypesLabel: PropTypes.string,
+        attachFilesLabel: PropTypes.string,
+        previewCannotBeDisplayedLabel: PropTypes.string
     }
 
     static defaultProps = {
         max: +Infinity,
         enableRename: true,
         enableDownload: true,
+        dropFilesHereLabel: 'Or drop files here',
+        supportedFileTypesLabel: 'Supported file types',
+        attachFilesLabel: 'Attach files',
+        previewCannotBeDisplayedLabel: 'Preview cannot be displayed',
         accept: [
             'application/pdf',
             'image/jpeg',

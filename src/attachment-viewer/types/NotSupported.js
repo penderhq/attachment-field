@@ -20,7 +20,7 @@ export default class NotSupported extends React.Component {
                     color: #fff;
                 `}
             >
-                Preview cannot be displayed
+                {this.props.previewCannotBeDisplayedLabel}
             </div>
         )
     }
