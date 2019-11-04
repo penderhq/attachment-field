@@ -384,6 +384,7 @@ export default class AttachmentField extends React.Component {
                                                 >
                                                     {enableAttachButton ? (
                                                         <Button
+                                                            size={'sm'}
                                                             icon={icons.paperclip}
                                                             onClick={this.handleSelect}
                                                             className={css`
